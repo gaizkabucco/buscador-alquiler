@@ -2,9 +2,9 @@ const favorites = [];
 const selectList = document.querySelector("[data-select]");
 const searchButton = document.querySelector("[data-search-button]");
 
-const getCities = () => {
+const getCities = async () => {
 	const cities = [];
-	const data = getStoredItems();
+	const data = await getStoredItems();
 	data.forEach(elem => {
 		cities.push(elem.city);
 	});
@@ -25,8 +25,8 @@ searchButton.addEventListener("click", e => {
 	filterResults(searchValue);
 });
 
-const filterResults = value => {
-	const result = getStoredItems();
+const filterResults = async value => {
+	const result = await getStoredItems();
 	const filteredResults = result.filter(item => item.city === value);
 	return displayResults(filteredResults);
 };
@@ -40,7 +40,7 @@ const displayResults = arr => {
 		outputContainer.innerHTML = `
 		<div class="flex bg-white rounded-md w-[80vw] md:w-[60vw] mb-10">
          <div class="img-container rounded-l-md w-1/3">
-            <img src=${element.img[0]} class="object-cover h-full w-full rounded-l-md" data-details data-id=${element.id}>
+            <img src=${element.img[0]} class="object-cover h-full w-full rounded-l-md cursor-pointer" data-details data-id=${element.id}>
          </div>
          <div class="apt-description ml-10 my-4">
 				<p>Ubicacion: ${element.city}</p>
@@ -59,8 +59,8 @@ const displayResults = arr => {
 	showDetails();
 };
 
-const addToFavorites = () => {
-	const apartments = getStoredItems();
+const addToFavorites = async () => {
+	const apartments = await getStoredItems();
 	const addFavoriteButtons = document.querySelectorAll("[data-favorite]");
 	addFavoriteButtons.forEach(button => {
 		button.addEventListener("click", e => {

@@ -1,7 +1,7 @@
 const favoritesContainer = document.querySelector("[data-favorites-container]");
 
 const getFavorites = () => {
-	const storedItems = getStoredItems();
+	const storedItems = JSON.parse(localStorage.getItem("favorites"));
 	const favorites = storedItems.filter(elem => elem.favorite);
 	return favorites;
 };
@@ -19,7 +19,7 @@ const displayFavorites = () => {
 			outputContainer.innerHTML = `
 		   <div class="flex bg-white rounded-md w-[80vw] md:w-[60vw] mb-10">
             <div class="img-container rounded-l-md w-1/3">
-               <img src=.${element.img[0]} class="object-cover h-full w-full rounded-l-md" data-details data-id=${element.id}>
+               <img src=.${element.img[0]} class="object-cover h-full w-full rounded-l-md cursor-pointer" data-details data-id=${element.id}>
             </div>
             <div class="apt-description ml-10 my-4">
 						<p>Ubicacion: ${element.city}</p>
@@ -38,8 +38,8 @@ const displayFavorites = () => {
 
 displayFavorites();
 
-const deleteFavorites = async () => {
-	const apartments = await getStoredItems();
+const deleteFavorites = () => {
+	const apartments = JSON.parse(localStorage.getItem("favorites"));
 	const favoriteButtons = document.querySelectorAll("[data-favorite]");
 
 	favoriteButtons.forEach(button => {

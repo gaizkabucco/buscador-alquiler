@@ -1,5 +1,4 @@
 const db = "https://my-json-server.typicode.com/gaizkabucco/json-db/apartments";
-// const $ = selector => document.querySelector(selector);
 const resultContainer = document.querySelector("[data-result-container]");
 const favoriteTrue = `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"   width="25px" height="25px" viewBox="0 0 512 512"  pointer-events="none">
             <g transform="translate(0,512) scale(0.1,-0.1)" fill="red">
@@ -26,8 +25,7 @@ const getData = async () => {
 	}
 };
 
-getData();
-
-const getStoredItems = () => {
+const getStoredItems = async () => {
+	await getData();
 	return JSON.parse(localStorage.getItem("favorites"));
 };
