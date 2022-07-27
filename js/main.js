@@ -1,4 +1,4 @@
-const db = "https://my-json-server.typicode.com/gaizkabucco/json-db/apartments";
+// const db = "https://my-json-server.typicode.com/gaizkabucco/json-db/apartments";
 const resultContainer = document.querySelector("[data-result-container]");
 const favoriteTrue = `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"   width="25px" height="25px" viewBox="0 0 512 512"  pointer-events="none">
             <g transform="translate(0,512) scale(0.1,-0.1)" fill="red">
@@ -13,19 +13,19 @@ const favoriteFalse = `<svg version="1.0" xmlns="http://www.w3.org/2000/svg" wid
             </g>
          </svg>`;
 
-const getData = async () => {
-	if (!localStorage.getItem("favorites")) {
-		try {
-			const res = await fetch(db);
-			const data = await res.json();
-			localStorage.setItem("favorites", JSON.stringify(data));
-		} catch (error) {
-			console.error(error);
-		}
-	}
-};
+// const getData = async () => {
+// 	if (!localStorage.getItem("favorites")) {
+// 		try {
+// 			const res = await fetch(db);
+// 			const data = await res.json();
+// 			localStorage.setItem("favorites", JSON.stringify(data));
+// 		} catch (error) {
+// 			console.error(error);
+// 		}
+// 	}
+// };
 
-const getStoredItems = async () => {
-	await getData();
-	return JSON.parse(localStorage.getItem("favorites"));
-};
+// const getStoredItems = async () => {
+// 	await getData();
+// 	return JSON.parse(localStorage.getItem("favorites"));
+// };

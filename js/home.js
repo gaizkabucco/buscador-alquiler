@@ -1,3 +1,23 @@
+// ---------------------------------------
+const db = "https://my-json-server.typicode.com/gaizkabucco/json-db/apartments";
+const getData = async () => {
+	if (!localStorage.getItem("favorites")) {
+		try {
+			const res = await fetch(db);
+			const data = await res.json();
+			localStorage.setItem("favorites", JSON.stringify(data));
+		} catch (error) {
+			console.error(error);
+		}
+	}
+};
+
+const getStoredItems = async () => {
+	await getData();
+	return JSON.parse(localStorage.getItem("favorites"));
+};
+// ---------------------------------------
+
 const favorites = [];
 const selectList = document.querySelector("[data-select]");
 const searchButton = document.querySelector("[data-search-button]");
