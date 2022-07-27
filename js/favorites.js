@@ -1,4 +1,3 @@
-// ---------------------------------------------------------------
 const db = "https://my-json-server.typicode.com/gaizkabucco/json-db/apartments";
 const getData = async () => {
 	if (!localStorage.getItem("favorites")) {
@@ -16,7 +15,6 @@ const getStoredItems = async () => {
 	await getData();
 	return JSON.parse(localStorage.getItem("favorites"));
 };
-// ---------------------------------------------------------------
 
 const favoritesContainer = document.querySelector("[data-favorites-container]");
 
